@@ -46,7 +46,7 @@ const KURSE = [
   { n:'02', icon:'🦵', title:'Kickboxen',        for:'Alle Levels',           desc:'Kombiniere Boxen mit Kick-Techniken für ein kraftvolles Ganzkörper-Training. Mehr Dynamik, mehr Disziplin, mehr Wirkung.', tag:'Anfänger willkommen' },
   { n:'03', icon:'🇹🇭', title:'Muay Thai',        for:'Alle Levels',           desc:'Die 8 Waffen Thailands: Fäuste, Ellbogen, Knie, Schienbeine. Die effektivste Kampfkunst der Welt — und ein brutales Workout.', tag:'Anfänger willkommen' },
   { n:'04', icon:'⚡', title:'Personal Training', for:'Individuelle Betreuung', desc:'1:1 Training direkt mit einem unserer Coaches. Maximale Ergebnisse in kürzester Zeit — zugeschnitten auf deine Ziele.', tag:'Nach Vereinbarung' },
-  { n:'05', icon:'👦', title:'Kinderkurse',       for:'Kinder ab 6 Jahren',    desc:'Kampfsport für Kids: Motorik, Disziplin, Selbstvertrauen und Spaß — in einem sicheren und respektvollen Umfeld.', tag:'Altersgerecht' },
+  { n:'05', icon:'👦', title:'Kinderkurse',       for:'Kinder ab 4 Jahren',    desc:'Kampfsport für Kids: Motorik, Disziplin, Selbstvertrauen und Spaß — in einem sicheren und respektvollen Umfeld.', tag:'Altersgerecht' },
   { n:'06', icon:'💪', title:'Frauenkurse',       for:'Nur für Frauen',        desc:'Selbstverteidigung, Kondition und Stärke — in einer Atmosphäre, die ausschließlich für Frauen geschaffen ist.', tag:'Ladies Only' },
   { n:'07', icon:'🎵', title:'Zumba',             for:'Alle',                  desc:'Fitness trifft Rhythmus. Zumba kommt bald ins Fightlab — stay tuned für den Starttermin.', tag:'Coming Soon', soon: true },
 ];
@@ -55,7 +55,7 @@ const FINDER_OPTIONS = [
   { icon:'🔥', label:'Ich will fitter werden',                 title:'Boxen oder Kickboxen', desc:'Kampfsport ist das intensivste Workout das es gibt. Kalorien verbrennen, Ausdauer aufbauen — und dabei wirklich etwas lernen.', courses:['Boxen','Kickboxen','Muay Thai'] },
   { icon:'🥋', label:'Ich will Kampfsport lernen',             title:'Wähle deine Disziplin', desc:'Alle unsere Kurse sind für komplette Anfänger. Du startest bei Null und baust Schritt für Schritt auf.', courses:['Boxen','Kickboxen','Muay Thai'] },
   { icon:'🧠', label:'Ich will Selbstvertrauen aufbauen',      title:'Kampfsport verändert dich', desc:'Nichts baut Selbstvertrauen so schnell auf wie das Beherrschen einer Kampfkunst. Du wirst körperlich und mental stärker.', courses:['Boxen','Kickboxen','Muay Thai'] },
-  { icon:'👦', label:'Ich suche Training für mein Kind',       title:'Kinderkurse ab 6 Jahren', desc:'Sicher, strukturiert, Spaß. Unsere Kinderkurse fördern Disziplin, Respekt und ein starkes Körpergefühl.', courses:['Kinderkurse'] },
+  { icon:'👦', label:'Ich suche Training für mein Kind',       title:'Kinderkurse ab 4 Jahren', desc:'Sicher, strukturiert, Spaß. Unsere Kinderkurse fördern Disziplin, Respekt und ein starkes Körpergefühl.', courses:['Kinderkurse'] },
   { icon:'💪', label:'Ich möchte im Frauenkurs trainieren',    title:'Frauenkurs — nur für euch', desc:'Ein geschützter Raum, um Stärke aufzubauen. Ausschließlich für Frauen. Von erfahrenen Coaches geleitet.', courses:['Frauenkurse'] },
   { icon:'⚡', label:'Ich will 1:1 Personal Training',         title:'Maximale Ergebnisse', desc:'Du arbeitest direkt mit einem Coach. 100% auf dich zugeschnitten. Perfekt wenn du schnelle Fortschritte oder spezifische Ziele hast.', courses:['Personal Training'] },
 ];
@@ -168,7 +168,7 @@ const FAQS = [
   { q:'Ist Fightlab für Anfänger geeignet?', a:'Absolut. Alle unsere Kurse starten bei den Grundlagen. Du brauchst null Vorerfahrung — nur die Bereitschaft anzufangen.' },
   { q:'Muss ich fit sein, bevor ich starte?', a:'Nein. Fitness ist das Ergebnis, nicht die Voraussetzung. Komm wie du bist — du wirst schneller fit, als du denkst.' },
   { q:'Gibt es Frauenkurse?', a:'Ja. Unsere Frauenkurse finden in einem Raum statt, der ausschließlich für Frauen reserviert ist. Dienstags um 20:00 Uhr.' },
-  { q:'Gibt es Kinderkurse?', a:'Ja, für Kinder ab 6 Jahren. Die Kurse sind pädagogisch begleitet, sicher und machen Spaß. Eltern beim Probetraining herzlich willkommen.' },
+  { q:'Gibt es Kinderkurse?', a:'Ja, für Kinder ab 4 Jahren. Die Kurse sind pädagogisch begleitet, sicher und machen Spaß. Eltern beim Probetraining herzlich willkommen.' },
   { q:'Was brauche ich für das erste Training?', a:'Sportkleidung und Motivation. Handschuhe und Bandagen stellen wir für das Probetraining kostenlos zur Verfügung.' },
   { q:'Gibt es Personal Training?', a:'Ja. 1:1 Training mit einem unserer Coaches — direkt auf deine Ziele zugeschnitten. Sprich uns einfach an.' },
   { q:'Wie funktioniert die Fightlab App?', a:'Jedes Mitglied bekommt App-Zugang. Du trackst Kurse, Gewohnheiten und Fortschritte. Das Mitglied mit den meisten Kursen im Monat gewinnt ein Geschenk.' },
