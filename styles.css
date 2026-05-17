@@ -900,6 +900,7 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
   gap: 80px;
   align-items: center;
 }
+.ai-left, .ai-right { min-width: 0; }
 
 .ai-headline {
   font-family: var(--fh);
@@ -1591,6 +1592,8 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
   .ai-chips { flex-direction: column; align-items: stretch; }
   .ai-chip { display: flex; width: 100%; box-sizing: border-box; }
   .ai-chip-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+  .chat-quick { flex-wrap: wrap; overflow-x: hidden; }
+  .cq-btn { flex-shrink: 1; }
 
   /* Community */
   .comm-grid { grid-template-columns: 1fr; gap: 40px; }
