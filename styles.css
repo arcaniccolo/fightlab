@@ -1827,8 +1827,9 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
   }
   .insta-desc { max-width: 100%; margin-left: auto; margin-right: auto; }
   .insta-stats { justify-content: center; }
-  .insta-phone-wrap { display: none; }
+  .insta-phone-wrap { display: flex; justify-content: center; }
+  .iphone-frame { width: 240px; }
 }
 @media (max-width: 640px) {
-  .insta-phone-wrap { display: none; }
+  .iphone-frame { width: 200px; }
 }
