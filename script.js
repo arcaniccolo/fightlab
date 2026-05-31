@@ -218,7 +218,7 @@ const KURSE_TRANS = {
   ],
   tr: [
     { title:'Boks',             for:'Tüm seviyeler',           desc:'Temeller, ayak işleri ve kondisyona odaklanan teknik boks. Profesyonel gibi vuruş teknikleri, savunma ve hareket.', tag:'Yeni başlayanlar için' },
-    { title:'Kickboks',         for:'Tüm seviyeler',           desc:'Güçlü bir tam vücut antremanı için boksu kick teknikleriyle birleştir. Daha fazla dinamizm, disiplin ve etki.', tag:'Yeni başlayanlar için' },
+    { title:'Kickboks',         for:'Tüm seviyeler',           desc:'Güçlü bir tam vücut antrenmanı için boksu kick teknikleriyle birleştir. Daha fazla dinamizm, disiplin ve etki.', tag:'Yeni başlayanlar için' },
     { title:'Muay Thai',        for:'Tüm seviyeler',           desc:'Tayland\'ın 8 silahı: yumruklar, dirsekler, dizler, incikler. Dünyanın en etkili dövüş sanatı — ve zorlu bir antrenman.', tag:'Yeni başlayanlar için' },
     { title:'Kişisel Antrenman',for:'Bireysel koçluk',         desc:'Koçlarımızdan biriyle birebir antrenman. En kısa sürede maksimum sonuç — hedeflerinize özel.', tag:'Randevuyla' },
     { title:'Çocuk Kursları',   for:'4 yaşından itibaren',     desc:'Çocuklar için dövüş sporu: motor beceriler, disiplin, özgüven ve eğlence — güvenli ve saygılı bir ortamda.', tag:'Yaşa uygun' },
@@ -272,11 +272,11 @@ const VALUES_TRANS = {
 
 const AI_QUESTIONS_TRANS = {
   en: ['When is Muay Thai?','When is the women\'s class?','How do I book a trial?','Where do I find the app?','Which classes are for beginners?','What do I need to bring?'],
-  tr: ['Muay Thai ne zaman?','Kadın kursu ne zaman?','Deneme antremanı nasıl rezerve edilir?','Uygulamayı nerede bulabilirim?','Hangi kurslar yeni başlayanlar için?','Ne getirmem gerekiyor?'],
+  tr: ['Muay Thai ne zaman?','Kadın kursu ne zaman?','Deneme antrenmanı nasıl rezerve edilir?','Uygulamayı nerede bulabilirim?','Hangi kurslar yeni başlayanlar için?','Ne getirmem gerekiyor?'],
 };
 const AI_QUICK_TRANS = {
   en: ['Trial training','Schedule','Boxing','Muay Thai','Kids','Women'],
-  tr: ['Deneme antremanı','Program','Boks','Muay Thai','Çocuk','Kadın'],
+  tr: ['Deneme antrenmanı','Program','Boks','Muay Thai','Çocuk','Kadın'],
 };
 
 const FAQ_TRANS = {
@@ -291,10 +291,10 @@ const FAQ_TRANS = {
   tr: [
     { q:'Önceden deneyim gerekli mi?', a:'Hayır. Tüm kurslarımız tam yeni başlayanlar için tasarlanmıştır. Sıfırdan başlarsın — deneyim gerekli değil.' },
     { q:'Ne getirmem gerekiyor?', a:'Rahat spor kıyafeti ve antrenman ayakkabısı. Boks için başlangıç eldiveni ödünç alabilirsin. Sadece kendin gel.' },
-    { q:'Ne kadar tutuyor?', a:'Üyelikler aylık 59€\'dan başlıyor. Seçeneklerini öğrenmek için ücretsiz deneme antremanına gelmen en iyisi.' },
+    { q:'Ne kadar tutuyor?', a:'Üyelikler aylık 59€\'dan başlıyor. Seçeneklerini öğrenmek için ücretsiz deneme antrenmanına gelmen en iyisi.' },
     { q:'Çocuklar burada antrenman yapabilir mi?', a:'Evet, 4 yaşından itibaren. Çocuk kurslarımız pedagojik olarak denetlenir, güvenlidir ve eğlencelidir. Ebeveynler izlemeye hoş geldiniz.' },
     { q:'Sadece kadınlar için kurs var mı?', a:'Evet. Kadın kursumuz pazartesi ve çarşamba günleri yapılır. Sadece kadınlar, deneyimli koçlar.' },
-    { q:'Deneme antremanını nasıl rezerve edebilirim?', a:'"Deneme Antremanı Yap"a tıkla ve formu doldur — 24 saat içinde sana geri döneceğiz. Ya da doğrudan gel.' },
+    { q:'Deneme antrenmanını nasıl rezerve edebilirim?', a:'"Deneme Antrenmanı Yap"a tıkla ve formu doldur — 24 saat içinde sana geri döneceğiz. Ya da doğrudan gel.' },
   ]
 };
 
@@ -349,7 +349,7 @@ function selectFinder(idx) {
   const data = getFinderData();
   const o = data[idx];
   const recLabel = LANG==='en' ? 'Our recommendation for you' : LANG==='tr' ? 'Senin için önerimiz' : 'Empfehlung für dich';
-  const btnLabel = LANG==='en' ? 'Book trial training' : LANG==='tr' ? 'Deneme antremanı yap' : 'Probetraining buchen';
+  const btnLabel = LANG==='en' ? 'Book trial training' : LANG==='tr' ? 'Deneme antrenmanı yap' : 'Probetraining buchen';
   const panel = document.getElementById('finderResult');
   panel.innerHTML = `
     <div class="frp-tag">${recLabel}</div>
@@ -812,14 +812,14 @@ const TRANSLATIONS = {
   tr: {
     'nav.kurse': 'Kurslar',
     'nav.stundenplan': 'Program',
-    'nav.cta': 'Deneme Antremanı',
-    'nav.cta_book': 'Deneme Antremanı Yap',
+    'nav.cta': 'Deneme Antrenmanı',
+    'nav.cta_book': 'Deneme Antrenmanı Yap',
     'hero.eyebrow': 'En yüksek seviyede dövüş sporu',
-    'hero.h1_0': 'Antren Yap',
+    'hero.h1_0': 'Antrenman Yap',
     'hero.h1_1': 'Bir',
     'hero.h1_2': 'Dövüşçü Gibi.',
     'hero.sub': 'Boks · Kickboks · Muay Thai<br>Kişisel Antrenman · Çocuk & Kadın Kursları',
-    'hero.cta1': 'Ücretsiz Deneme Antremanı',
+    'hero.cta1': 'Ücretsiz Deneme Antrenmanı',
     'hero.cta2': 'Programı Gör',
     'hero.stat1': 'Disiplinler',
     'hero.stat2': 'Yeni başlayanlar için',
@@ -841,7 +841,7 @@ const TRANSLATIONS = {
     'member.badge': 'Yakında',
     'member.title': 'Kişisel<br><em>Üye Alanın</em>',
     'member.desc': 'İleride bir Üye Girişi de olacak — üyeliğini yönet, kurs rezervasyonu yap, faturaları görüntüle ve gelişimini takip et. Hepsi tek bir yerde.',
-    'member.cta': 'Deneme antremanı yap →',
+    'member.cta': 'Deneme antrenmanı yap →',
     'ai.tag': '24/7 Destek',
     'ai.title': 'Dijital<br><em>Fightlab Asistanın</em>',
     'ai.desc': 'Tüm önemli sorulara gün boyu yanıt — telefon yok, bekleme yok.',
@@ -857,11 +857,11 @@ const TRANSLATIONS = {
     'comm.note': 'Yeni başlayanlar sadece hoş karşılanmaz.<br>Onlar her şeyin özüdür.',
     'faq.title': 'Sık Sorulan<br><em>Sorular</em>',
     'faq.sub': 'Başlamadan önce bilmen gereken her şey.',
-    'faq.cta': 'Doğrudan deneme antremanı yap →',
+    'faq.cta': 'Doğrudan deneme antrenmanı yap →',
     'ctaf.tag': 'İlk adımın',
-    'ctaf.title': 'İlk adım<br>senin <em>deneme antremanın.</em>',
+    'ctaf.title': 'İlk adım<br>senin <em>deneme antrenmanın.</em>',
     'ctaf.sub': 'Baskı yok. Bahane yok.<br>Gel ve Fightlab\'ı kendin deneyimle.',
-    'ctaf.cta': 'Şimdi ücretsiz deneme antremanı yap',
+    'ctaf.cta': 'Şimdi ücretsiz deneme antrenmanı yap',
     'ctaf.micro': '100% ücretsiz · Yükümlülük yok · Yeni başlayanlar özellikle hoş karşılanır',
     'insta.social_tag': 'Sosyal Medya',
     'insta.title': 'Bizi takip et<br><em>Instagram</em>\'da',
@@ -874,12 +874,12 @@ const TRANSLATIONS = {
     'footer.location': 'Konum',
     'footer.hours': 'Çalışma Saatleri',
     'footer.sunday': 'Paz · Randevu ile',
-    'footer.trial_h': 'Deneme Antremanı',
-    'footer.trial_text': 'İlk antremanın ücretsiz. Sözleşme yok. Risk yok.',
+    'footer.trial_h': 'Deneme Antrenmanı',
+    'footer.trial_text': 'İlk antrenmanın ücretsiz. Sözleşme yok. Risk yok.',
     'footer.trial_btn': 'Şimdi yap',
     'footer.bottom_right': 'Premium Dövüş Sporları · Özenle yapıldı',
     'modal.tag': 'Ücretsiz & yükümlülüksüz',
-    'modal.title': 'Deneme antremanı yap',
+    'modal.title': 'Deneme antrenmanı yap',
     'modal.sub': 'Bir kurs seçin — 24 saat içinde size geri döneceğiz.',
     'modal.name': 'Ad',
     'modal.name_ph': 'Adınız',
@@ -892,11 +892,11 @@ const TRANSLATIONS = {
     'modal.unsure': 'Henüz emin değilim',
     'modal.msg': 'Mesaj (isteğe bağlı)',
     'modal.msg_ph': 'Önceki deneyim, tercih edilen zaman, sorular…',
-    'modal.submit': 'Deneme antremanı talep et',
+    'modal.submit': 'Deneme antrenmanı talep et',
     'login.sub': 'Kişisel üye alanın.',
     'login.pw': 'Şifre',
     'login.btn': 'Giriş yap',
-    'login.hint': 'Henüz üye değil misin? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Deneme antremanı yap</a>',
+    'login.hint': 'Henüz üye değil misin? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Deneme antrenmanı yap</a>',
     'wa.label': 'Bize yaz',
   }
 };
