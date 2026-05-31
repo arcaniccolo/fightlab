@@ -2,6 +2,46 @@
    FIGHTLAB – SCRIPT v2
    ============================================================ */
 
+// ── COOKIE CONSENT ──────────────────────────────────────────
+// Load fonts if already consented
+(function() {
+  if (localStorage.getItem('fl_cookie_consent') === 'accepted') {
+    const link = document.createElement('link');
+    link.rel = 'stylesheet';
+    link.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap';
+    document.head.appendChild(link);
+  }
+})();
+
+function initCookieBanner() {
+  const consent = localStorage.getItem('fl_cookie_consent');
+  if (consent === null) {
+    setTimeout(() => {
+      const banner = document.getElementById('cookieBanner');
+      if (banner) banner.classList.add('visible');
+    }, 1200);
+  }
+}
+
+function setCookieConsent(accepted) {
+  localStorage.setItem('fl_cookie_consent', accepted ? 'accepted' : 'declined');
+  const banner = document.getElementById('cookieBanner');
+  if (banner) {
+    banner.classList.remove('visible');
+    banner.classList.add('hiding');
+    setTimeout(() => banner.remove(), 400);
+  }
+  if (accepted) {
+    // Load Google Fonts dynamically if not already loaded
+    if (!document.querySelector('link[href*="googleapis"]')) {
+      const link = document.createElement('link');
+      link.rel = 'stylesheet';
+      link.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap';
+      document.head.appendChild(link);
+    }
+  }
+}
+
 // ── LOGO PNG CONVERSION ─────────────────────────────────────
 async function processLogo(canvasEl, targetHeight) {
   if (!canvasEl) return;
@@ -656,6 +696,9 @@ async function init() {
   // Init language
   const savedLang = localStorage.getItem('fl_lang') || 'de';
   setLang(savedLang);
+
+  // Cookie banner
+  initCookieBanner();
 }
 
 // ── i18n ───────────────────────────────────────────────────
@@ -748,6 +791,10 @@ const TRANSLATIONS = {
     'login.pw': 'Passwort',
     'login.btn': 'Einloggen',
     'login.hint': 'Noch kein Mitglied? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Probetraining buchen</a>',
+    'cookie.title': 'Wir nutzen Cookies',
+    'cookie.desc': 'Wir verwenden Cookies und externe Dienste (z.B. Google Fonts), um dir das beste Erlebnis zu bieten. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.',
+    'cookie.decline': 'Nur notwendige',
+    'cookie.accept': 'Alle akzeptieren',
     'reviews.tag': 'Google Bewertungen',
     'reviews.title': 'Was unsere<br><em>Mitglieder sagen</em>',
     'wa.label': 'Schreib uns',
@@ -840,6 +887,10 @@ const TRANSLATIONS = {
     'login.pw': 'Password',
     'login.btn': 'Log in',
     'login.hint': 'Not a member yet? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Book trial training</a>',
+    'cookie.title': 'We use cookies',
+    'cookie.desc': 'We use cookies and external services (e.g. Google Fonts) to give you the best experience. Learn more in our <a href="datenschutz.html">Privacy Policy</a>.',
+    'cookie.decline': 'Necessary only',
+    'cookie.accept': 'Accept all',
     'reviews.tag': 'Google Reviews',
     'reviews.title': 'What our<br><em>members say</em>',
     'wa.label': 'Write to us',
@@ -932,6 +983,10 @@ const TRANSLATIONS = {
     'login.pw': 'Şifre',
     'login.btn': 'Giriş yap',
     'login.hint': 'Henüz üye değil misin? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Deneme antrenmanı yap</a>',
+    'cookie.title': 'Çerez kullanıyoruz',
+    'cookie.desc': 'En iyi deneyimi sunmak için çerezler ve harici hizmetler (ör. Google Fonts) kullanıyoruz. Daha fazlası için <a href="datenschutz.html">Gizlilik Politikamıza</a> bakın.',
+    'cookie.decline': 'Yalnızca gerekli',
+    'cookie.accept': 'Tümünü kabul et',
     'reviews.tag': 'Google Yorumları',
     'reviews.title': 'Üyelerimiz<br><em>ne diyor</em>',
     'wa.label': 'Bize yaz',

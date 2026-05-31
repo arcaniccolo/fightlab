@@ -4,9 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Fightlab – Stadtallendorf</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<!-- Fonts loaded via JS after cookie consent -->
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -524,6 +522,23 @@
       </button>
       <div class="mf-hint" data-i18n-html="login.hint">Noch kein Mitglied? <a href="#cta-final" onclick="closeModal('loginModal')">Probetraining buchen</a></div>
     </form>
+  </div>
+</div>
+
+<!-- COOKIE BANNER -->
+<div class="cookie-banner" id="cookieBanner">
+  <div class="cb-inner">
+    <div class="cb-left">
+      <div class="cb-icon">🍪</div>
+      <div class="cb-text">
+        <p class="cb-title" data-i18n="cookie.title">Wir nutzen Cookies</p>
+        <p class="cb-desc" data-i18n-html="cookie.desc">Wir verwenden Cookies und externe Dienste (z.B. Google Fonts), um dir das beste Erlebnis zu bieten. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+      </div>
+    </div>
+    <div class="cb-btns">
+      <button class="cb-btn cb-decline" onclick="setCookieConsent(false)" data-i18n="cookie.decline">Nur notwendige</button>
+      <button class="cb-btn cb-accept" onclick="setCookieConsent(true)" data-i18n="cookie.accept">Alle akzeptieren</button>
+    </div>
   </div>
 </div>
 
