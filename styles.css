@@ -1624,6 +1624,61 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
 }
 
 /* ============================================================
+   LANGUAGE SWITCHER
+   ============================================================ */
+
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  background: var(--bg-2);
+  border: 1px solid var(--br1);
+  border-radius: 100px;
+  padding: 3px;
+}
+.ls-btn {
+  border: none;
+  background: transparent;
+  color: var(--t3);
+  font-family: var(--fb);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  padding: 4px 9px;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: background .2s, color .2s;
+}
+.ls-btn.active {
+  background: var(--bg-dark);
+  color: #fff;
+}
+.ls-btn:not(.active):hover { color: var(--t1); }
+
+#navbar.scrolled .lang-switch {
+  background: #f0eeea;
+  border-color: var(--br2);
+}
+
+/* Mobile menu lang */
+.mm-lang {
+  display: flex;
+  gap: 4px;
+  margin-top: 8px;
+  padding: 12px 0 4px;
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+.mm-lang .ls-btn {
+  color: rgba(255,255,255,.4);
+  font-size: 13px;
+  padding: 6px 12px;
+}
+.mm-lang .ls-btn.active {
+  background: var(--gold);
+  color: #fff;
+}
+
+/* ============================================================
    WHATSAPP FLOAT BUTTON
    ============================================================ */
 

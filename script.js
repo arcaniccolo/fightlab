@@ -204,28 +204,138 @@ const AI_ANSWERS = {
   'default': 'Gerne helfe ich weiter! Am schnellsten geht es per WhatsApp oder beim kostenlosen Probetraining direkt vor Ort.',
 };
 
+// ── TRANSLATED DYNAMIC DATA ────────────────────────────────
+
+const KURSE_TRANS = {
+  en: [
+    { title:'Boxing',           for:'All levels',              desc:'Technical boxing focused on fundamentals, footwork and conditioning. Punching techniques, defense and movement like a pro.', tag:'Beginners welcome' },
+    { title:'Kickboxing',       for:'All levels',              desc:'Combine boxing with kick techniques for a powerful full-body workout. More dynamics, more discipline, more impact.', tag:'Beginners welcome' },
+    { title:'Muay Thai',        for:'All levels',              desc:'The 8 weapons of Thailand: fists, elbows, knees, shins. The most effective martial art in the world — and a brutal workout.', tag:'Beginners welcome' },
+    { title:'Personal Training',for:'Individual coaching',     desc:'1:1 training directly with one of our coaches. Maximum results in minimum time — tailored to your goals.', tag:'By appointment' },
+    { title:'Kids Classes',     for:'Children from 4 years',   desc:'Martial arts for kids: motor skills, discipline, self-confidence and fun — in a safe and respectful environment.', tag:'Age-appropriate' },
+    { title:'Women\'s Classes', for:'Women only',              desc:'Self-defense, fitness and strength — in an environment created exclusively for women.', tag:'Ladies Only' },
+    { title:'Zumba',            for:'Everyone',                desc:'Fitness meets rhythm. Zumba is coming soon to Fightlab — stay tuned for the start date.', tag:'Coming Soon', soon:true },
+  ],
+  tr: [
+    { title:'Boks',             for:'Tüm seviyeler',           desc:'Temeller, ayak işleri ve kondisyona odaklanan teknik boks. Profesyonel gibi vuruş teknikleri, savunma ve hareket.', tag:'Yeni başlayanlar için' },
+    { title:'Kickboks',         for:'Tüm seviyeler',           desc:'Güçlü bir tam vücut antremanı için boksu kick teknikleriyle birleştir. Daha fazla dinamizm, disiplin ve etki.', tag:'Yeni başlayanlar için' },
+    { title:'Muay Thai',        for:'Tüm seviyeler',           desc:'Tayland\'ın 8 silahı: yumruklar, dirsekler, dizler, incikler. Dünyanın en etkili dövüş sanatı — ve zorlu bir antrenman.', tag:'Yeni başlayanlar için' },
+    { title:'Kişisel Antrenman',for:'Bireysel koçluk',         desc:'Koçlarımızdan biriyle birebir antrenman. En kısa sürede maksimum sonuç — hedeflerinize özel.', tag:'Randevuyla' },
+    { title:'Çocuk Kursları',   for:'4 yaşından itibaren',     desc:'Çocuklar için dövüş sporu: motor beceriler, disiplin, özgüven ve eğlence — güvenli ve saygılı bir ortamda.', tag:'Yaşa uygun' },
+    { title:'Kadın Kursları',   for:'Sadece kadınlar',         desc:'Öz savunma, kondisyon ve güç — yalnızca kadınlar için oluşturulmuş bir ortamda.', tag:'Sadece Bayanlar' },
+    { title:'Zumba',            for:'Herkes',                  desc:'Fitness ritimle buluşuyor. Zumba yakında Fightlab\'a geliyor — başlangıç tarihi için takipte kalın.', tag:'Yakında', soon:true },
+  ]
+};
+
+const FINDER_TRANS = {
+  en: [
+    { icon:'🔥', label:'I want to get fitter',                title:'Boxing or Kickboxing', desc:'Martial arts is the most intense workout there is. Burn calories, build endurance — and actually learn something.', courses:['Boxing','Kickboxing','Muay Thai'] },
+    { icon:'🥋', label:'I want to learn martial arts',        title:'Choose your discipline', desc:'All our classes are for complete beginners. You start from zero and build step by step.', courses:['Boxing','Kickboxing','Muay Thai'] },
+    { icon:'🧠', label:'I want to build self-confidence',     title:'Martial arts changes you', desc:'Nothing builds confidence as fast as mastering a martial art. You become physically and mentally stronger.', courses:['Boxing','Kickboxing','Muay Thai'] },
+    { icon:'👦', label:'I\'m looking for training for my child', title:'Kids classes from age 4', desc:'Safe, structured, fun. Our kids classes promote discipline, respect and a strong body awareness.', courses:['Kids Classes'] },
+    { icon:'💪', label:'I want to train in the women\'s class', title:'Women\'s class — just for you', desc:'A safe space to build strength. Women only. Led by experienced coaches.', courses:['Women\'s Classes'] },
+    { icon:'⚡', label:'I want 1:1 personal training',        title:'Maximum results', desc:'You work directly with a coach. 100% tailored to you. Perfect if you want fast progress or specific goals.', courses:['Personal Training'] },
+  ],
+  tr: [
+    { icon:'🔥', label:'Daha fit olmak istiyorum',            title:'Boks veya Kickboks', desc:'Dövüş sporu, var olan en yoğun antrenmandır. Kalori yak, dayanıklılık kazan — ve gerçekten bir şeyler öğren.', courses:['Boks','Kickboks','Muay Thai'] },
+    { icon:'🥋', label:'Dövüş sporu öğrenmek istiyorum',      title:'Disiplinini seç', desc:'Tüm kurslarımız tam yeni başlayanlar için. Sıfırdan başlayıp adım adım gelişirsin.', courses:['Boks','Kickboks','Muay Thai'] },
+    { icon:'🧠', label:'Özgüven kazanmak istiyorum',          title:'Dövüş sporu seni değiştirir', desc:'Hiçbir şey bir dövüş sanatında ustalaşmak kadar hızlı özgüven oluşturmaz. Fiziksel ve zihinsel olarak güçlenirsin.', courses:['Boks','Kickboks','Muay Thai'] },
+    { icon:'👦', label:'Çocuğum için antrenman arıyorum',     title:'4 yaşından itibaren çocuk kursları', desc:'Güvenli, yapılandırılmış, eğlenceli. Çocuk kurslarımız disiplin, saygı ve güçlü bir beden farkındalığı geliştirir.', courses:['Çocuk Kursları'] },
+    { icon:'💪', label:'Kadın kursunda antrenman yapmak istiyorum', title:'Kadın kursu — yalnızca sizin için', desc:'Güç kazanmak için güvenli bir alan. Yalnızca kadınlar. Deneyimli koçlar tarafından yönetilir.', courses:['Kadın Kursları'] },
+    { icon:'⚡', label:'1:1 kişisel antrenman istiyorum',     title:'Maksimum sonuçlar', desc:'Doğrudan bir koçla çalışırsın. %100 sana özel. Hızlı ilerleme veya özel hedefler istiyorsan mükemmel.', courses:['Kişisel Antrenman'] },
+  ]
+};
+
+const SCHED_LABELS = {
+  en: { Mo:'Mon',Di:'Tue',Mi:'Wed',Do:'Thu',Fr:'Fri',Sa:'Sat', Montag:'Monday',Dienstag:'Tuesday',Mittwoch:'Wednesday',Donnerstag:'Thursday',Freitag:'Friday',Samstag:'Saturday', 'Alle Levels':'All levels','Nur für Frauen':'Women only','Jugendliche':'Youth','4–6 Jahre':'4–6 yrs','7–12 Jahre':'7–12 yrs' },
+  tr: { Mo:'Pzt',Di:'Sal',Mi:'Çar',Do:'Per',Fr:'Cum',Sa:'Cmt', Montag:'Pazartesi',Dienstag:'Salı',Mittwoch:'Çarşamba',Donnerstag:'Perşembe',Freitag:'Cuma',Samstag:'Cumartesi', 'Alle Levels':'Tüm seviyeler','Nur für Frauen':'Sadece kadınlar','Jugendliche':'Gençler','4–6 Jahre':'4–6 yaş','7–12 Jahre':'7–12 yaş' },
+};
+
+const VALUES_TRANS = {
+  en: [
+    { icon:'⚔️', title:'Discipline',    desc:'Get better every day.' },
+    { icon:'🤝', title:'Respect',        desc:'In the gym and in life.' },
+    { icon:'💪', title:'Strength',       desc:'Body and mind.' },
+    { icon:'🧠', title:'Self-confidence',desc:'From the very first class.' },
+    { icon:'🔥', title:'Transformation', desc:'You change here.' },
+    { icon:'👊', title:'Community',      desc:'Real togetherness.' },
+  ],
+  tr: [
+    { icon:'⚔️', title:'Disiplin',       desc:'Her gün daha iyiye.' },
+    { icon:'🤝', title:'Saygı',           desc:'Salonda ve hayatta.' },
+    { icon:'💪', title:'Güç',             desc:'Beden ve zihin.' },
+    { icon:'🧠', title:'Özgüven',         desc:'İlk kurstan itibaren.' },
+    { icon:'🔥', title:'Dönüşüm',         desc:'Burada değişirsin.' },
+    { icon:'👊', title:'Dayanışma',       desc:'Gerçek topluluk.' },
+  ]
+};
+
+const AI_QUESTIONS_TRANS = {
+  en: ['When is Muay Thai?','When is the women\'s class?','How do I book a trial?','Where do I find the app?','Which classes are for beginners?','What do I need to bring?'],
+  tr: ['Muay Thai ne zaman?','Kadın kursu ne zaman?','Deneme antremanı nasıl rezerve edilir?','Uygulamayı nerede bulabilirim?','Hangi kurslar yeni başlayanlar için?','Ne getirmem gerekiyor?'],
+};
+const AI_QUICK_TRANS = {
+  en: ['Trial training','Schedule','Boxing','Muay Thai','Kids','Women'],
+  tr: ['Deneme antremanı','Program','Boks','Muay Thai','Çocuk','Kadın'],
+};
+
+const FAQ_TRANS = {
+  en: [
+    { q:'Do I need previous experience?', a:'No. All our classes are designed for complete beginners. You start from zero — no experience necessary.' },
+    { q:'What should I bring?', a:'Comfortable sportswear and training shoes. For boxing we have beginner gloves to borrow. Just bring yourself.' },
+    { q:'How much does it cost?', a:'Memberships start from €59/month. The best way to find out your options is at a free trial training session.' },
+    { q:'Can children train here?', a:'Yes, from age 4. Our kids classes are pedagogically supervised, safe and fun. Parents are welcome to watch.' },
+    { q:'Is there a women-only class?', a:'Yes. Our women\'s class takes place on Mondays and Wednesdays. Only women, experienced coaches.' },
+    { q:'How do I book a trial?', a:'Click "Book Trial Training" and fill in the form — we\'ll get back to you within 24 hours. Or just come by directly.' },
+  ],
+  tr: [
+    { q:'Önceden deneyim gerekli mi?', a:'Hayır. Tüm kurslarımız tam yeni başlayanlar için tasarlanmıştır. Sıfırdan başlarsın — deneyim gerekli değil.' },
+    { q:'Ne getirmem gerekiyor?', a:'Rahat spor kıyafeti ve antrenman ayakkabısı. Boks için başlangıç eldiveni ödünç alabilirsin. Sadece kendin gel.' },
+    { q:'Ne kadar tutuyor?', a:'Üyelikler aylık 59€\'dan başlıyor. Seçeneklerini öğrenmek için ücretsiz deneme antremanına gelmen en iyisi.' },
+    { q:'Çocuklar burada antrenman yapabilir mi?', a:'Evet, 4 yaşından itibaren. Çocuk kurslarımız pedagojik olarak denetlenir, güvenlidir ve eğlencelidir. Ebeveynler izlemeye hoş geldiniz.' },
+    { q:'Sadece kadınlar için kurs var mı?', a:'Evet. Kadın kursumuz pazartesi ve çarşamba günleri yapılır. Sadece kadınlar, deneyimli koçlar.' },
+    { q:'Deneme antremanını nasıl rezerve edebilirim?', a:'"Deneme Antremanı Yap"a tıkla ve formu doldur — 24 saat içinde sana geri döneceğiz. Ya da doğrudan gel.' },
+  ]
+};
+
+function getKurseData()   { return KURSE_TRANS[LANG] || KURSE; }
+function getFinderData()  { return FINDER_TRANS[LANG] || FINDER_OPTIONS; }
+function getValuesData()  { return VALUES_TRANS[LANG] || VALUES; }
+function getAIQuestions() { return AI_QUESTIONS_TRANS[LANG] || AI_QUESTIONS; }
+function getAIQuick()     { return AI_QUICK_TRANS[LANG] || AI_QUICK; }
+function getFAQData()     { return FAQ_TRANS[LANG] || FAQ; }
+
+function schedLabel(key) {
+  const m = SCHED_LABELS[LANG];
+  return (m && m[key]) || key;
+}
+
 // ── RENDER ─────────────────────────────────────────────────
 
 function renderKurse() {
   const g = document.getElementById('kurseGrid');
   if (!g) return;
-  g.innerHTML = KURSE.map(k => `
-    <div class="kurs-card${k.soon ? ' coming-soon' : ''} reveal">
-      ${k.soon ? '<div class="kc-badge">Coming Soon</div>' : ''}
-      <span class="kc-num">${k.n}</span>
-      <span class="kc-icon">${k.icon}</span>
+  const data = getKurseData();
+  g.innerHTML = data.map((k, i) => {
+    const base = KURSE[i];
+    return `
+    <div class="kurs-card${k.soon||base.soon ? ' coming-soon' : ''} reveal">
+      ${k.soon||base.soon ? `<div class="kc-badge">${t('app.badge')}</div>` : ''}
+      <span class="kc-num">${base.n}</span>
+      <span class="kc-icon">${base.icon}</span>
       <h3 class="kc-title">${k.title}</h3>
       <div class="kc-for">${k.for}</div>
       <p class="kc-desc">${k.desc}</p>
       <span class="kc-pill">${k.tag}</span>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
 function renderFinder() {
   const opts = document.getElementById('finderOptions');
   if (!opts) return;
-  opts.innerHTML = FINDER_OPTIONS.map((o, i) => `
+  const data = getFinderData();
+  opts.innerHTML = data.map((o, i) => `
     <button class="finder-opt" onclick="selectFinder(${i})">
       <span class="fo-num">0${i+1}</span>
       <span class="fo-icon">${o.icon}</span>
@@ -236,15 +346,18 @@ function renderFinder() {
 
 function selectFinder(idx) {
   document.querySelectorAll('.finder-opt').forEach((el, i) => el.classList.toggle('active', i === idx));
-  const o = FINDER_OPTIONS[idx];
+  const data = getFinderData();
+  const o = data[idx];
+  const recLabel = LANG==='en' ? 'Our recommendation for you' : LANG==='tr' ? 'Senin için önerimiz' : 'Empfehlung für dich';
+  const btnLabel = LANG==='en' ? 'Book trial training' : LANG==='tr' ? 'Deneme antremanı yap' : 'Probetraining buchen';
   const panel = document.getElementById('finderResult');
   panel.innerHTML = `
-    <div class="frp-tag">Empfehlung für dich</div>
+    <div class="frp-tag">${recLabel}</div>
     <div class="frp-title">${o.title}</div>
     <p class="frp-desc">${o.desc}</p>
     <div class="frp-tags">${o.courses.map(c => `<span class="frp-tag-pill">${c}</span>`).join('')}</div>
     <a href="#cta-final" class="cta-primary" onclick="openTrialModal(); return false;">
-      <span>Probetraining buchen</span>
+      <span>${btnLabel}</span>
       <svg viewBox="0 0 20 12" fill="none"><path d="M13 1l6 5-6 5M1 6h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     </a>
   `;
@@ -256,14 +369,14 @@ function renderSchedule() {
   c.innerHTML = SCHEDULE.map(d => `
     <div class="sched-day reveal">
       <div class="sched-day-head">
-        <div class="sdh-day">${d.day}</div>
-        <div class="sdh-date">${d.label}</div>
+        <div class="sdh-day">${schedLabel(d.day)}</div>
+        <div class="sdh-date">${schedLabel(d.label)}</div>
       </div>
       ${d.slots.map(s => `
         <div class="sched-slot ${s.type}">
           ${s.time ? `<div class="ss-time">${s.time}</div>` : ''}
           <div class="ss-name">${s.name}</div>
-          <div class="ss-level">${s.level}</div>
+          <div class="ss-level">${schedLabel(s.level)}</div>
         </div>
       `).join('')}
     </div>
@@ -288,7 +401,7 @@ function renderMember() {
 
 function renderAI() {
   const chips = document.getElementById('aiChips');
-  if (chips) chips.innerHTML = AI_QUESTIONS.map(q => `
+  if (chips) chips.innerHTML = getAIQuestions().map(q => `
     <button class="ai-chip" onclick="askBot('${q}')">
       <span class="ai-chip-arrow">→</span>
       <span class="ai-chip-text">${q}</span>
@@ -296,7 +409,7 @@ function renderAI() {
   `).join('');
 
   const quick = document.getElementById('chatQuick');
-  if (quick) quick.innerHTML = AI_QUICK.map(q => `
+  if (quick) quick.innerHTML = getAIQuick().map(q => `
     <button class="cq-btn" onclick="askBot('${q}')">${q}</button>
   `).join('');
 }
@@ -323,7 +436,7 @@ function renderTrainers() {
 function renderValues() {
   const g = document.getElementById('valuesGrid');
   if (!g) return;
-  g.innerHTML = VALUES.map(v => `
+  g.innerHTML = getValuesData().map(v => `
     <div class="value-item">
       <span class="vi-icon">${v.icon}</span>
       <div class="vi-title">${v.title}</div>
@@ -354,7 +467,7 @@ function renderPricing() {
 function renderFAQ() {
   const list = document.getElementById('faqList');
   if (!list) return;
-  list.innerHTML = FAQS.map((f, i) => `
+  list.innerHTML = getFAQData().map((f, i) => `
     <div class="faq-item" id="fi-${i}">
       <button class="faq-q" onclick="toggleFAQ(${i})">
         <span class="faq-q-text">${f.q}</span>
@@ -508,6 +621,321 @@ async function init() {
   }
 
   requestAnimationFrame(() => requestAnimationFrame(observeReveal));
+
+  // Init language
+  const savedLang = localStorage.getItem('fl_lang') || 'de';
+  setLang(savedLang);
+}
+
+// ── i18n ───────────────────────────────────────────────────
+const TRANSLATIONS = {
+  de: {
+    'nav.kurse': 'Kurse',
+    'nav.stundenplan': 'Stundenplan',
+    'nav.cta': 'Probetraining',
+    'nav.cta_book': 'Probetraining buchen',
+    'hero.eyebrow': 'Kampfsport auf höchstem Niveau',
+    'hero.h1_0': 'Trainiere',
+    'hero.h1_1': 'Wie ein',
+    'hero.h1_2': 'Kämpfer.',
+    'hero.sub': 'Boxen · Kickboxen · Muay Thai<br>Personal Training · Kinder- & Frauenkurse',
+    'hero.cta1': 'Kostenloses Probetraining',
+    'hero.cta2': 'Stundenplan ansehen',
+    'hero.stat1': 'Disziplinen',
+    'hero.stat2': 'Anfänger willkommen',
+    'hero.stat3': 'AI Assistent',
+    'hero.scroll': 'Scroll',
+    'kurse.tag': 'Das Training',
+    'kurse.title': 'Unsere <em>Disziplinen</em>',
+    'kurse.sub': 'Jede Kampfsportart hat ihre eigene Energie. Find deine.',
+    'finder.tag': 'Kursfinder',
+    'finder.title': 'Welcher Kurs<br><em>passt zu dir?</em>',
+    'finder.default': 'Wähle eine Option — wir zeigen dir deine Kurse.',
+    'sched.tag': 'Stundenplan',
+    'sched.title': 'Wöchentlicher <em>Trainingsplan</em>',
+    'sched.sub': 'Aktuelle Trainingszeiten',
+    'app.badge': 'Demnächst',
+    'app.title': 'Dein Training.<br>Immer dabei.<br><em>Die Fightlab App.</em>',
+    'app.desc': 'Als Mitglied erhältst du Zugang zur Fightlab App — tracke deine Kurse, verfolge deine Fortschritte, nimm an Monats-Challenges teil und sieh, wo du im Leaderboard stehst.',
+    'app.cta': 'Jetzt Mitglied werden',
+    'member.badge': 'In Kürze verfügbar',
+    'member.title': 'Dein persönlicher<br><em>Mitgliederbereich</em>',
+    'member.desc': 'In Zukunft wird es auch einen Member Login geben — damit kannst du deine Mitgliedschaft verwalten, Kurse buchen, Rechnungen einsehen und deine Fortschritte tracken. Alles an einem Ort.',
+    'member.cta': 'Probetraining buchen →',
+    'ai.tag': '24/7 Support',
+    'ai.title': 'Dein digitaler<br><em>Fightlab Assistent</em>',
+    'ai.desc': 'Rund um die Uhr Antworten auf alle wichtigen Fragen — kein Telefon, keine Wartezeit.',
+    'ai.status': 'Online · Antwortet sofort',
+    'ai.greeting': 'Hey! Wie kann ich dir helfen? 👊',
+    'ai.now': 'Jetzt',
+    'ai.placeholder': 'Schreib eine Frage…',
+    'comm.tag': 'Die Bewegung',
+    'comm.title': 'Kein normales<br>Gym.<br><em>Eine Bewegung.</em>',
+    'comm.desc': 'Bei Fightlab geht es nicht nur darum, fit zu werden. Es geht darum, wer du wirst — durch Disziplin, Respekt und echten Zusammenhalt.',
+    'comm.quote': 'Ich bin als totaler Anfänger gekommen. Heute bin ich Teil einer Familie, die mich täglich besser macht.',
+    'comm.author': '— Fightlab Mitglied, Stadtallendorf',
+    'comm.note': 'Anfänger sind nicht nur willkommen.<br>Sie sind der Kern von allem.',
+    'faq.title': 'Häufige<br><em>Fragen</em>',
+    'faq.sub': 'Alles was du wissen musst, bevor du anfängst.',
+    'faq.cta': 'Direkt Probetraining buchen →',
+    'ctaf.tag': 'Dein erster Schritt',
+    'ctaf.title': 'Der erste Schritt<br>ist dein <em>Probetraining.</em>',
+    'ctaf.sub': 'Kein Druck. Keine Ausreden.<br>Komm vorbei und erlebe Fightlab selbst.',
+    'ctaf.cta': 'Jetzt kostenloses Probetraining buchen',
+    'ctaf.micro': '100% kostenlos · Keine Verpflichtung · Anfänger ausdrücklich willkommen',
+    'insta.social_tag': 'Social Media',
+    'insta.title': 'Folge uns<br>auf <em>Instagram</em>',
+    'insta.desc': 'Aktuelle News, Trainingseinblicke, Kurse und Community-Momente — direkt auf deinem Feed.',
+    'insta.followers': 'Follower',
+    'insta.posts': 'Beiträge',
+    'insta.cta': '@fightlaballendorf folgen',
+    'footer.tagline': 'Trainiere wie ein Kämpfer.<br>Lebe mit Disziplin.',
+    'footer.nav': 'Navigation',
+    'footer.location': 'Standort',
+    'footer.hours': 'Öffnungszeiten',
+    'footer.sunday': 'So · Nach Vereinbarung',
+    'footer.trial_h': 'Probetraining',
+    'footer.trial_text': 'Dein erstes Training ist kostenlos. Kein Vertrag. Kein Risiko.',
+    'footer.trial_btn': 'Jetzt buchen',
+    'footer.bottom_right': 'Premium Kampfsport · Made with precision',
+    'modal.tag': 'Kostenlos & unverbindlich',
+    'modal.title': 'Probetraining buchen',
+    'modal.sub': 'Wähle einen Kurs — wir melden uns innerhalb von 24 Stunden bei dir.',
+    'modal.name': 'Name',
+    'modal.name_ph': 'Dein Name',
+    'modal.contact': 'E-Mail oder WhatsApp',
+    'modal.course': 'Welcher Kurs?',
+    'modal.boxing': 'Boxen',
+    'modal.kickboxing': 'Kickboxen',
+    'modal.kids': 'Kinderkurs',
+    'modal.women': 'Frauenkurs',
+    'modal.unsure': 'Noch nicht sicher',
+    'modal.msg': 'Nachricht (optional)',
+    'modal.msg_ph': 'Vorerfahrung, Wunschtermin, Fragen…',
+    'modal.submit': 'Probetraining anfragen',
+    'login.sub': 'Dein persönlicher Mitgliederbereich.',
+    'login.pw': 'Passwort',
+    'login.btn': 'Einloggen',
+    'login.hint': 'Noch kein Mitglied? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Probetraining buchen</a>',
+    'wa.label': 'Schreib uns',
+  },
+  en: {
+    'nav.kurse': 'Classes',
+    'nav.stundenplan': 'Schedule',
+    'nav.cta': 'Trial Training',
+    'nav.cta_book': 'Book Trial Training',
+    'hero.eyebrow': 'Martial arts at the highest level',
+    'hero.h1_0': 'Train',
+    'hero.h1_1': 'Like a',
+    'hero.h1_2': 'Fighter.',
+    'hero.sub': 'Boxing · Kickboxing · Muay Thai<br>Personal Training · Kids & Women\'s Classes',
+    'hero.cta1': 'Free Trial Training',
+    'hero.cta2': 'View Schedule',
+    'hero.stat1': 'Disciplines',
+    'hero.stat2': 'Beginners welcome',
+    'hero.stat3': 'AI Assistant',
+    'hero.scroll': 'Scroll',
+    'kurse.tag': 'Training',
+    'kurse.title': 'Our <em>Disciplines</em>',
+    'kurse.sub': 'Every martial art has its own energy. Find yours.',
+    'finder.tag': 'Course Finder',
+    'finder.title': 'Which class<br><em>is right for you?</em>',
+    'finder.default': 'Choose an option — we\'ll show you your classes.',
+    'sched.tag': 'Schedule',
+    'sched.title': 'Weekly <em>Training Schedule</em>',
+    'sched.sub': 'Current training times',
+    'app.badge': 'Coming Soon',
+    'app.title': 'Your training.<br>Always with you.<br><em>The Fightlab App.</em>',
+    'app.desc': 'As a member you get access to the Fightlab App — track your classes, follow your progress, join monthly challenges and see where you stand on the leaderboard.',
+    'app.cta': 'Become a member now',
+    'member.badge': 'Coming Soon',
+    'member.title': 'Your personal<br><em>Member Area</em>',
+    'member.desc': 'In the future there will also be a Member Login — manage your membership, book classes, view invoices and track your progress. All in one place.',
+    'member.cta': 'Book trial training →',
+    'ai.tag': '24/7 Support',
+    'ai.title': 'Your digital<br><em>Fightlab Assistant</em>',
+    'ai.desc': 'Answers to all important questions around the clock — no phone call, no waiting.',
+    'ai.status': 'Online · Responds instantly',
+    'ai.greeting': 'Hey! How can I help you? 👊',
+    'ai.now': 'Now',
+    'ai.placeholder': 'Write a question…',
+    'comm.tag': 'The Movement',
+    'comm.title': 'Not just a<br>Gym.<br><em>A movement.</em>',
+    'comm.desc': 'At Fightlab it\'s not just about getting fit. It\'s about who you become — through discipline, respect and real community.',
+    'comm.quote': 'I came as a complete beginner. Today I\'m part of a family that makes me better every day.',
+    'comm.author': '— Fightlab Member, Stadtallendorf',
+    'comm.note': 'Beginners aren\'t just welcome.<br>They are the heart of everything.',
+    'faq.title': 'Frequently<br><em>Asked Questions</em>',
+    'faq.sub': 'Everything you need to know before you start.',
+    'faq.cta': 'Book trial training directly →',
+    'ctaf.tag': 'Your first step',
+    'ctaf.title': 'The first step<br>is your <em>trial training.</em>',
+    'ctaf.sub': 'No pressure. No excuses.<br>Come by and experience Fightlab yourself.',
+    'ctaf.cta': 'Book free trial training now',
+    'ctaf.micro': '100% free · No obligation · Beginners explicitly welcome',
+    'insta.social_tag': 'Social Media',
+    'insta.title': 'Follow us<br>on <em>Instagram</em>',
+    'insta.desc': 'Current news, training insights, classes and community moments — straight to your feed.',
+    'insta.followers': 'Followers',
+    'insta.posts': 'Posts',
+    'insta.cta': 'Follow @fightlaballendorf',
+    'footer.tagline': 'Train like a fighter.<br>Live with discipline.',
+    'footer.nav': 'Navigation',
+    'footer.location': 'Location',
+    'footer.hours': 'Opening Hours',
+    'footer.sunday': 'Sun · By appointment',
+    'footer.trial_h': 'Trial Training',
+    'footer.trial_text': 'Your first training is free. No contract. No risk.',
+    'footer.trial_btn': 'Book now',
+    'footer.bottom_right': 'Premium Martial Arts · Made with precision',
+    'modal.tag': 'Free & no obligation',
+    'modal.title': 'Book trial training',
+    'modal.sub': 'Choose a class — we\'ll get back to you within 24 hours.',
+    'modal.name': 'Name',
+    'modal.name_ph': 'Your name',
+    'modal.contact': 'Email or WhatsApp',
+    'modal.course': 'Which class?',
+    'modal.boxing': 'Boxing',
+    'modal.kickboxing': 'Kickboxing',
+    'modal.kids': 'Kids class',
+    'modal.women': 'Women\'s class',
+    'modal.unsure': 'Not sure yet',
+    'modal.msg': 'Message (optional)',
+    'modal.msg_ph': 'Previous experience, preferred time, questions…',
+    'modal.submit': 'Request trial training',
+    'login.sub': 'Your personal member area.',
+    'login.pw': 'Password',
+    'login.btn': 'Log in',
+    'login.hint': 'Not a member yet? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Book trial training</a>',
+    'wa.label': 'Write to us',
+  },
+  tr: {
+    'nav.kurse': 'Kurslar',
+    'nav.stundenplan': 'Program',
+    'nav.cta': 'Deneme Antremanı',
+    'nav.cta_book': 'Deneme Antremanı Yap',
+    'hero.eyebrow': 'En yüksek seviyede dövüş sporu',
+    'hero.h1_0': 'Antren Yap',
+    'hero.h1_1': 'Bir',
+    'hero.h1_2': 'Dövüşçü Gibi.',
+    'hero.sub': 'Boks · Kickboks · Muay Thai<br>Kişisel Antrenman · Çocuk & Kadın Kursları',
+    'hero.cta1': 'Ücretsiz Deneme Antremanı',
+    'hero.cta2': 'Programı Gör',
+    'hero.stat1': 'Disiplinler',
+    'hero.stat2': 'Yeni başlayanlar için',
+    'hero.stat3': 'AI Asistan',
+    'hero.scroll': 'Kaydır',
+    'kurse.tag': 'Antrenman',
+    'kurse.title': '<em>Disiplinlerimiz</em>',
+    'kurse.sub': 'Her dövüş sporunun kendine özgü enerjisi var. Seninki hangisi?',
+    'finder.tag': 'Kurs Bulucu',
+    'finder.title': 'Hangi kurs<br><em>sana uygun?</em>',
+    'finder.default': 'Bir seçenek seçin — kurslarınızı gösterelim.',
+    'sched.tag': 'Program',
+    'sched.title': 'Haftalık <em>Antrenman Programı</em>',
+    'sched.sub': 'Güncel antrenman saatleri',
+    'app.badge': 'Yakında',
+    'app.title': 'Antrenmanın.<br>Her zaman yanında.<br><em>Fightlab Uygulaması.</em>',
+    'app.desc': 'Üye olarak Fightlab Uygulamasına erişim kazanırsın — kurslarını takip et, ilerlemeni gör, aylık yarışmalara katıl ve sıralamanda nerede olduğunu öğren.',
+    'app.cta': 'Şimdi üye ol',
+    'member.badge': 'Yakında',
+    'member.title': 'Kişisel<br><em>Üye Alanın</em>',
+    'member.desc': 'İleride bir Üye Girişi de olacak — üyeliğini yönet, kurs rezervasyonu yap, faturaları görüntüle ve gelişimini takip et. Hepsi tek bir yerde.',
+    'member.cta': 'Deneme antremanı yap →',
+    'ai.tag': '24/7 Destek',
+    'ai.title': 'Dijital<br><em>Fightlab Asistanın</em>',
+    'ai.desc': 'Tüm önemli sorulara gün boyu yanıt — telefon yok, bekleme yok.',
+    'ai.status': 'Çevrimiçi · Anında yanıtlar',
+    'ai.greeting': 'Hey! Nasıl yardımcı olabilirim? 👊',
+    'ai.now': 'Şimdi',
+    'ai.placeholder': 'Bir soru yazın…',
+    'comm.tag': 'Hareket',
+    'comm.title': 'Sıradan bir<br>spor salonu değil.<br><em>Bir hareket.</em>',
+    'comm.desc': 'Fightlab\'da sadece fit olmak değil, kim olduğun önemli — disiplin, saygı ve gerçek dayanışmayla.',
+    'comm.quote': 'Tamamen acemi olarak geldim. Bugün beni her gün daha iyi yapan bir ailenin parçasıyım.',
+    'comm.author': '— Fightlab Üyesi, Stadtallendorf',
+    'comm.note': 'Yeni başlayanlar sadece hoş karşılanmaz.<br>Onlar her şeyin özüdür.',
+    'faq.title': 'Sık Sorulan<br><em>Sorular</em>',
+    'faq.sub': 'Başlamadan önce bilmen gereken her şey.',
+    'faq.cta': 'Doğrudan deneme antremanı yap →',
+    'ctaf.tag': 'İlk adımın',
+    'ctaf.title': 'İlk adım<br>senin <em>deneme antremanın.</em>',
+    'ctaf.sub': 'Baskı yok. Bahane yok.<br>Gel ve Fightlab\'ı kendin deneyimle.',
+    'ctaf.cta': 'Şimdi ücretsiz deneme antremanı yap',
+    'ctaf.micro': '100% ücretsiz · Yükümlülük yok · Yeni başlayanlar özellikle hoş karşılanır',
+    'insta.social_tag': 'Sosyal Medya',
+    'insta.title': 'Bizi takip et<br><em>Instagram</em>\'da',
+    'insta.desc': 'Güncel haberler, antrenman görünümleri, kurslar ve topluluk anları — doğrudan akışında.',
+    'insta.followers': 'Takipçi',
+    'insta.posts': 'Gönderi',
+    'insta.cta': '@fightlaballendorf\'u takip et',
+    'footer.tagline': 'Bir dövüşçü gibi antren yap.<br>Disiplinle yaşa.',
+    'footer.nav': 'Navigasyon',
+    'footer.location': 'Konum',
+    'footer.hours': 'Çalışma Saatleri',
+    'footer.sunday': 'Paz · Randevu ile',
+    'footer.trial_h': 'Deneme Antremanı',
+    'footer.trial_text': 'İlk antremanın ücretsiz. Sözleşme yok. Risk yok.',
+    'footer.trial_btn': 'Şimdi yap',
+    'footer.bottom_right': 'Premium Dövüş Sporları · Özenle yapıldı',
+    'modal.tag': 'Ücretsiz & yükümlülüksüz',
+    'modal.title': 'Deneme antremanı yap',
+    'modal.sub': 'Bir kurs seçin — 24 saat içinde size geri döneceğiz.',
+    'modal.name': 'Ad',
+    'modal.name_ph': 'Adınız',
+    'modal.contact': 'E-posta veya WhatsApp',
+    'modal.course': 'Hangi kurs?',
+    'modal.boxing': 'Boks',
+    'modal.kickboxing': 'Kickboks',
+    'modal.kids': 'Çocuk kursu',
+    'modal.women': 'Kadın kursu',
+    'modal.unsure': 'Henüz emin değilim',
+    'modal.msg': 'Mesaj (isteğe bağlı)',
+    'modal.msg_ph': 'Önceki deneyim, tercih edilen zaman, sorular…',
+    'modal.submit': 'Deneme antremanı talep et',
+    'login.sub': 'Kişisel üye alanın.',
+    'login.pw': 'Şifre',
+    'login.btn': 'Giriş yap',
+    'login.hint': 'Henüz üye değil misin? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Deneme antremanı yap</a>',
+    'wa.label': 'Bize yaz',
+  }
+};
+
+let LANG = 'de';
+
+function t(key) {
+  return (TRANSLATIONS[LANG] && TRANSLATIONS[LANG][key]) || (TRANSLATIONS.de[key]) || key;
+}
+
+function setLang(lang) {
+  if (!TRANSLATIONS[lang]) return;
+  LANG = lang;
+  localStorage.setItem('fl_lang', lang);
+  document.documentElement.lang = lang;
+
+  // Update static elements
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    el.textContent = t(el.dataset.i18n);
+  });
+  document.querySelectorAll('[data-i18n-html]').forEach(el => {
+    el.innerHTML = t(el.dataset.i18nHtml);
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+    el.placeholder = t(el.dataset.i18nPh);
+  });
+
+  // Active button state
+  document.querySelectorAll('.ls-btn').forEach(btn => {
+    btn.classList.toggle('active', btn.dataset.lang === lang);
+  });
+
+  // Re-render dynamic sections
+  renderKurse();
+  renderFinder();
+  renderSchedule();
+  renderAI();
+  renderValues();
+  renderFAQ();
 }
 
 init();
