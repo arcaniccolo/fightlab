@@ -303,7 +303,7 @@ function getFinderData()  { return FINDER_TRANS[LANG] || FINDER_OPTIONS; }
 function getValuesData()  { return VALUES_TRANS[LANG] || VALUES; }
 function getAIQuestions() { return AI_QUESTIONS_TRANS[LANG] || AI_QUESTIONS; }
 function getAIQuick()     { return AI_QUICK_TRANS[LANG] || AI_QUICK; }
-function getFAQData()     { return FAQ_TRANS[LANG] || FAQ; }
+function getFAQData()     { return FAQ_TRANS[LANG] || FAQS; }
 
 function schedLabel(key) {
   const m = SCHED_LABELS[LANG];
