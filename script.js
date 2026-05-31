@@ -3,15 +3,7 @@
    ============================================================ */
 
 // ── COOKIE CONSENT ──────────────────────────────────────────
-// Load fonts if already consented
-(function() {
-  if (localStorage.getItem('fl_cookie_consent') === 'accepted') {
-    const link = document.createElement('link');
-    link.rel = 'stylesheet';
-    link.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap';
-    document.head.appendChild(link);
-  }
-})();
+// Fonts are self-hosted — no external load needed
 
 function initCookieBanner() {
   const consent = localStorage.getItem('fl_cookie_consent');
@@ -31,15 +23,7 @@ function setCookieConsent(accepted) {
     banner.classList.add('hiding');
     setTimeout(() => banner.remove(), 400);
   }
-  if (accepted) {
-    // Load Google Fonts dynamically if not already loaded
-    if (!document.querySelector('link[href*="googleapis"]')) {
-      const link = document.createElement('link');
-      link.rel = 'stylesheet';
-      link.href = 'https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@300;400;500;600;700&display=swap';
-      document.head.appendChild(link);
-    }
-  }
+  // Fonts are self-hosted — no action needed on accept
 }
 
 // ── LOGO PNG CONVERSION ─────────────────────────────────────
