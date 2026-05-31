@@ -748,94 +748,169 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
 /* ============================================================
    STUNDENPLAN
    ============================================================ */
-.schedule-container {
-  display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 12px;
+/* Day Switcher */
+.sched-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  flex-wrap: wrap;
 }
-
-.sched-day {
+.sched-tab {
+  border: none;
+  background: var(--bg-2);
+  border: 1px solid var(--br1);
+  border-radius: 100px;
+  padding: 10px 22px;
+  cursor: pointer;
+  transition: background .2s, color .2s, border-color .2s, transform .15s;
   display: flex;
   flex-direction: column;
-  gap: 8px;
+  align-items: center;
+  gap: 1px;
 }
-
-.sched-day-head {
+.sched-tab:hover { border-color: var(--gold); transform: translateY(-2px); }
+.sched-tab.active {
   background: var(--bg-dark);
-  border-radius: var(--r-sm);
-  padding: 14px 16px;
-  margin-bottom: 4px;
+  border-color: var(--bg-dark);
 }
-.sdh-day {
+.st-short {
   font-family: var(--fh);
-  font-size: 28px;
+  font-size: 18px;
   font-weight: 900;
   text-transform: uppercase;
-  color: var(--gold);
+  color: var(--t2);
   line-height: 1;
+  letter-spacing: .5px;
 }
-.sdh-date {
-  font-size: 11px;
-  font-weight: 500;
-  letter-spacing: 1px;
-  color: rgba(255,255,255,.35);
+.sched-tab.active .st-short { color: var(--gold); }
+.st-label {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .08em;
   text-transform: uppercase;
+  color: var(--t3);
 }
+.sched-tab.active .st-label { color: rgba(255,255,255,.4); }
 
+/* Day panel */
+.sched-panels { position: relative; }
+.sched-panel { display: none; }
+.sched-panel.active { display: flex; flex-direction: column; gap: 12px; }
+
+/* Slot card */
 .sched-slot {
+  display: flex;
+  align-items: center;
+  gap: 0;
   background: #fff;
   border: 1px solid var(--br1);
-  border-radius: var(--r-sm);
-  padding: 14px 14px;
-  position: relative;
+  border-radius: var(--r-md);
   overflow: hidden;
+  box-shadow: var(--sh-xs);
   transition: transform .2s var(--ease), box-shadow .2s var(--ease);
-  border-left: 3px solid transparent;
 }
-.sched-slot:hover { transform: translateY(-2px); box-shadow: var(--sh-sm); }
+.sched-slot:hover { transform: translateY(-2px); box-shadow: var(--sh-md); }
 
-.ss-time {
-  font-size: 10px;
-  font-weight: 600;
+.ss-time-block {
+  background: var(--bg-dark);
+  padding: 20px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-width: 110px;
+  align-self: stretch;
+  gap: 2px;
+}
+.ss-t-start {
+  font-family: var(--fh);
+  font-size: 22px;
+  font-weight: 900;
+  color: #fff;
+  line-height: 1;
   letter-spacing: .5px;
-  color: var(--t3);
-  margin-bottom: 6px;
-  font-variant-numeric: tabular-nums;
+}
+.ss-t-end {
+  font-size: 11px;
+  font-weight: 500;
+  color: rgba(255,255,255,.35);
+  letter-spacing: .5px;
+}
+.ss-t-sep {
+  width: 20px;
+  height: 1px;
+  background: rgba(255,255,255,.15);
+  margin: 4px 0;
+}
+
+.ss-body {
+  padding: 18px 22px;
+  flex: 1;
 }
 .ss-name {
   font-family: var(--fh);
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 800;
   text-transform: uppercase;
   letter-spacing: .3px;
   color: var(--t1);
-  margin-bottom: 4px;
-  line-height: 1.2;
+  line-height: 1;
+  margin-bottom: 6px;
+}
+.ss-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
 }
 .ss-level {
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 500;
   color: var(--t3);
-  letter-spacing: .3px;
+}
+.ss-badge {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 3px 10px;
+  border-radius: 100px;
+  background: var(--gold-10);
+  color: var(--gold);
 }
 
-/* Slot type colors */
-.sched-slot.box   { border-left-color: #4A7FD4; background: rgba(74,127,212,.04); }
-.sched-slot.kick  { border-left-color: #8B5CF6; background: rgba(139,92,246,.04); }
-.sched-slot.muay  { border-left-color: var(--gold); background: var(--gold-10); }
-.sched-slot.kids  { border-left-color: #F59E0B; background: rgba(245,158,11,.04); }
-.sched-slot.women { border-left-color: #EC4899; background: rgba(236,72,153,.04); }
-.sched-slot.pt    { border-left-color: #10B981; background: rgba(16,185,129,.04); }
-.sched-slot.special { border-left-color: #06B6D4; background: rgba(6,182,212,.04); }
-.sched-slot.rest  { opacity: .4; border-left-color: var(--br3); }
+/* type accent on left edge */
+.sched-slot::before {
+  content: '';
+  width: 3px;
+  align-self: stretch;
+  flex-shrink: 0;
+}
+.sched-slot.box::before    { background: #4A7FD4; }
+.sched-slot.kick::before   { background: #8B5CF6; }
+.sched-slot.muay::before   { background: var(--gold); }
+.sched-slot.kids::before   { background: #F59E0B; }
+.sched-slot.women::before  { background: #EC4899; }
+.sched-slot.special::before { background: #06B6D4; }
+.sched-slot.rest::before   { background: var(--br2); }
 
-.sched-slot.box .ss-name   { color: #4A7FD4; }
-.sched-slot.kick .ss-name  { color: #8B5CF6; }
-.sched-slot.muay .ss-name  { color: var(--gold); }
-.sched-slot.kids .ss-name  { color: #D97706; }
-.sched-slot.women .ss-name { color: #DB2777; }
-.sched-slot.pt .ss-name    { color: #059669; }
-.sched-slot.special .ss-name { color: #0891B2; }
+/* type badge colors */
+.sched-slot.box    .ss-badge { background: rgba(74,127,212,.1);  color: #4A7FD4; }
+.sched-slot.kick   .ss-badge { background: rgba(139,92,246,.1);  color: #8B5CF6; }
+.sched-slot.muay   .ss-badge { background: var(--gold-10);       color: var(--gold); }
+.sched-slot.kids   .ss-badge { background: rgba(245,158,11,.1);  color: #D97706; }
+.sched-slot.women  .ss-badge { background: rgba(236,72,153,.1);  color: #DB2777; }
+.sched-slot.special .ss-badge { background: rgba(6,182,212,.1);  color: #0891B2; }
+
+@media (max-width: 768px) {
+  .sched-tabs { gap: 6px; }
+  .sched-tab { padding: 8px 14px; }
+  .st-short { font-size: 15px; }
+  .ss-time-block { min-width: 88px; padding: 16px 14px; }
+  .ss-t-start { font-size: 18px; }
+  .ss-body { padding: 14px 16px; }
+  .ss-name { font-size: 17px; }
+}
 
 /* ============================================================
    COMING SOON (App + Member)
@@ -1510,7 +1585,7 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
   .footer-top { grid-template-columns: 1fr 1fr; gap: 48px; }
   .finder-wrap { grid-template-columns: 1fr; }
   .finder-result-panel { min-height: 200px; }
-  .schedule-container { grid-template-columns: repeat(3, 1fr); }
+  /* Schedule tabs wrap on tablet */
 }
 
 @media (max-width: 860px) {
@@ -1566,22 +1641,7 @@ button { border: none; background: none; cursor: pointer; font-family: var(--fb)
   .kc-desc { display: none; }
   .kurs-card { padding: 24px 20px; }
 
-  /* Schedule */
-  .schedule-container {
-    display: flex;
-    overflow-x: auto;
-    scroll-snap-type: x mandatory;
-    gap: 12px;
-    padding-bottom: 12px;
-    -webkit-overflow-scrolling: touch;
-    scrollbar-width: none;
-  }
-  .schedule-container::-webkit-scrollbar { display: none; }
-  .sched-day {
-    flex-shrink: 0;
-    width: 200px;
-    scroll-snap-align: start;
-  }
+  /* Schedule — tabs stay scrollable on mobile */
 
   /* Finder */
   .finder-wrap { grid-template-columns: 1fr; }
