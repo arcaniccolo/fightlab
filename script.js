@@ -400,50 +400,31 @@ function renderSchedule() {
   const c = document.getElementById('scheduleContainer');
   if (!c) return;
 
-  const typeBadge = {
-    box:'Boxen', kick:'K1 / Muay Thai', muay:'Muay Thai',
-    kids:'Kids', women:'Ladies Only', special:'BJJ', rest:''
-  };
+  const typeIcon = { box:'🥊', kick:'🦵', muay:'🇹🇭', kids:'👦', women:'💪', special:'🥋', rest:'—' };
 
   const slotCard = s => {
     const parts = s.time ? s.time.split('–') : ['',''];
     const start = parts[0].trim();
     const end   = parts[1] ? parts[1].trim() : '';
-    const badge = typeBadge[s.type] || '';
     return `
       <div class="sched-slot ${s.type}">
-        <div class="ss-time-block">
-          <div class="ss-t-start">${start}</div>
-          <div class="ss-t-sep"></div>
-          <div class="ss-t-end">${end}</div>
-        </div>
-        <div class="ss-body">
-          <div class="ss-name">${s.name}</div>
-          <div class="ss-meta">
-            <span class="ss-level">${schedLabel(s.level)}</span>
-            ${badge ? `<span class="ss-badge">${badge}</span>` : ''}
-          </div>
-        </div>
+        <div class="ss-time">${start}<span class="ss-end"> – ${end}</span></div>
+        <div class="ss-name">${s.name}</div>
+        <div class="ss-level">${schedLabel(s.level)}</div>
       </div>`;
   };
 
-  const tabs = SCHEDULE.map((d, i) => `
-    <button class="sched-tab${i===0?' active':''}" onclick="switchDay(${i})">
-      <span class="st-short">${schedLabel(d.day)}</span>
-      <span class="st-label">${schedLabel(d.label)}</span>
-    </button>`).join('');
-
-  const panels = SCHEDULE.map((d, i) => `
-    <div class="sched-panel${i===0?' active':''}">
-      ${d.slots.map(slotCard).join('')}
-    </div>`).join('');
-
-  c.innerHTML = `<div class="sched-tabs">${tabs}</div><div class="sched-panels">${panels}</div>`;
-}
-
-function switchDay(idx) {
-  document.querySelectorAll('.sched-tab').forEach((t, i) => t.classList.toggle('active', i===idx));
-  document.querySelectorAll('.sched-panel').forEach((p, i) => p.classList.toggle('active', i===idx));
+  c.innerHTML = SCHEDULE.map(d => `
+    <div class="sched-col">
+      <div class="sched-col-head">
+        <div class="sch-day">${schedLabel(d.day)}</div>
+        <div class="sch-label">${schedLabel(d.label)}</div>
+      </div>
+      <div class="sched-col-slots">
+        ${d.slots.map(slotCard).join('')}
+      </div>
+    </div>
+  `).join('');
 }
 
 function renderApp() {
