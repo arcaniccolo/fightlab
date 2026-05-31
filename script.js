@@ -140,6 +140,15 @@ const TRAINERS = [
   { role:'Personal Trainer', name:'Platzhalter', desc:'Individuelles High-Performance Coaching für maximale Ergebnisse.', emoji:'⚡' },
 ];
 
+const REVIEWS = [
+  { name:'Arda Salci',    initials:'AS', text:'Top Kampfsport-Gym mit super Atmosphäre. Die Trainer sind fachlich stark, motivierend und nehmen sich wirklich Zeit für jeden – egal ob Anfänger oder Fortgeschrittener. Das Training ist intensiv und macht Spaß. Klare Empfehlung!' },
+  { name:'Mert Yüzgülen', initials:'MY', text:'Super Kampfsport-Gym mit freundlicher Atmosphäre. Die Trainer sind kompetent und motiviert, das Training macht Spaß und ist für Anfänger wie Fortgeschrittene geeignet. Man fühlt sich direkt willkommen. Klare Empfehlung!' },
+  { name:'Umut',          initials:'U',  text:'Der Trainer geht auf jeden persönlich ein und gibt sich Mühe. Man lernt und geht immer an seine Grenzen. Klare Empfehlung.' },
+  { name:'Ertan Nayman',  initials:'EN', text:'Richtig gute Kampfschule, Trainer sind korrekt und das Training macht Spaß. Gute Stimmung und man fühlt sich direkt wohl. Empfehlenswert.' },
+  { name:'Melissa Hanci', initials:'MH', text:'Mein 5-jähriger Sohn ist begeistert von dem Kurs bei Fightlab und geht jedes Mal mit viel Freude hin. Tolles Training und super Umgang mit den Kindern. Sehr empfehlenswert!' },
+  { name:'Sahil Stoman',  initials:'SS', text:'Absolut top! Professionelle Trainer, super Atmosphäre und Training das wirklich Spaß macht. 👍🥊💪' },
+];
+
 const VALUES = [
   { icon:'⚔️', title:'Disziplin',       desc:'Täglich besser werden.' },
   { icon:'🤝', title:'Respekt',          desc:'Im Gym und im Leben.' },
@@ -433,6 +442,27 @@ function renderTrainers() {
   `).join('');
 }
 
+function renderReviews() {
+  const track = document.getElementById('reviewsTrack');
+  if (!track) return;
+  const stars = '★★★★★';
+  const card = r => `
+    <div class="rv-card">
+      <div class="rv-stars">${stars}</div>
+      <p class="rv-text">${r.text}</p>
+      <div class="rv-footer">
+        <div class="rv-avatar">${r.initials}</div>
+        <div class="rv-meta">
+          <div class="rv-name">${r.name}</div>
+          <div class="rv-source">Google · vor einer Woche</div>
+        </div>
+      </div>
+    </div>`;
+  // Duplicate for seamless loop
+  const html = [...REVIEWS, ...REVIEWS].map(card).join('');
+  track.innerHTML = html;
+}
+
 function renderValues() {
   const g = document.getElementById('valuesGrid');
   if (!g) return;
@@ -596,6 +626,7 @@ async function init() {
   renderMember();
   renderAI();
   renderTrainers();
+  renderReviews();
   renderValues();
   renderPricing();
   renderFAQ();
@@ -717,6 +748,8 @@ const TRANSLATIONS = {
     'login.pw': 'Passwort',
     'login.btn': 'Einloggen',
     'login.hint': 'Noch kein Mitglied? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Probetraining buchen</a>',
+    'reviews.tag': 'Google Bewertungen',
+    'reviews.title': 'Was unsere<br><em>Mitglieder sagen</em>',
     'wa.label': 'Schreib uns',
   },
   en: {
@@ -807,6 +840,8 @@ const TRANSLATIONS = {
     'login.pw': 'Password',
     'login.btn': 'Log in',
     'login.hint': 'Not a member yet? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Book trial training</a>',
+    'reviews.tag': 'Google Reviews',
+    'reviews.title': 'What our<br><em>members say</em>',
     'wa.label': 'Write to us',
   },
   tr: {
@@ -897,6 +932,8 @@ const TRANSLATIONS = {
     'login.pw': 'Şifre',
     'login.btn': 'Giriş yap',
     'login.hint': 'Henüz üye değil misin? <a href="#cta-final" onclick="closeModal(\'loginModal\')">Deneme antrenmanı yap</a>',
+    'reviews.tag': 'Google Yorumları',
+    'reviews.title': 'Üyelerimiz<br><em>ne diyor</em>',
     'wa.label': 'Bize yaz',
   }
 };
